@@ -1,0 +1,63 @@
+version: '3.8'
+
+
+services:
+ backend:
+   build:
+     context: ./backend
+     dockerfile: Dockerfile
+   container_name: backend
+   restart: always
+   depends_on:
+     - postgres
+   environment:
+     DATABASE_URL: "postgresql://postgres:D3ux5our1s@postgres:5432/gparcauto"
+     SECRET_TOKEN: "/:6dvlrme$Xb3sf="
+     MAIL_HOST: "smtp.gmail.com"
+     MAIL_PORT: "587"
+     MAIL_USER: "emjikbelmous@gmail.com"
+     MAIL_PASSWORD: "gkcr mbas hhok ktpw"
+     PORT: 3001
+     NODE_ENV: "production"
+   ports:
+     - "3001:3001"
+   networks:
+     - app-network
+
+
+ frontend:
+   build:
+     context: ./frontend
+     dockerfile: Dockerfile
+   container_name: frontend
+   restart: always
+   ports:
+     - "3000:3000"
+   networks:
+     - app-network
+
+
+ postgres:
+   image: postgres:15
+   container_name: postgres
+   restart: always
+   environment:
+     POSTGRES_USER: postgres
+     POSTGRES_PASSWORD: D3ux5our1s
+     POSTGRES_DB: gparcauto
+   volumes:
+     - postgres_data:/var/lib/postgresql/data
+   ports:
+     - "5432:5432"
+   networks:
+     - app-network
+
+
+networks:
+ app-network:
+   driver: bridge
+
+
+volumes:
+ postgres_data:
+   driver: local

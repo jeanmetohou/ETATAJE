@@ -1,0 +1,7 @@
+-- AlterTable
+ALTER TABLE "Etat" ALTER COLUMN "tribunalChambres" SET DATA TYPE TEXT,
+ALTER COLUMN "nomEtQualiteDesPartiesConseil" SET DATA TYPE TEXT,
+ALTER COLUMN "objet" SET DATA TYPE TEXT,
+ALTER COLUMN "faitsEtProcedure" SET DATA TYPE TEXT,
+ALTER COLUMN "moyensDesParties" SET DATA TYPE TEXT,
+ALTER COLUMN "observations" SET DATA TYPE TEXT;
